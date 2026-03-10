@@ -177,6 +177,7 @@ function startBot() {
         } catch (err) {
           message.reply(`Error: ${err.message}`);
         }
+      }
       case COMMANDS.MAX_HP: {
         if (args.length < 2) {
           message.reply(USAGE.MAX_HP);
@@ -243,6 +244,24 @@ function startBot() {
           message.reply(`Error updating HP: ${err.message}`);
         }
         break;
+      }
+        
+      case COMMANDS.SET_STATS: {
+          if (args.length < 3) {
+            message.reply(USAGE.SET_STATS);
+            return;
+          }
+          const characterName = args[0];
+          const stat = args[1];
+          const value = args[2];
+          const { setStats } = require('./commands/setStats');
+          try {
+            const newValue = setStats(characterName, stat, value);
+            message.reply(`Updated '${stat}' for '${characterName}' to ${newValue}.`);
+          } catch (err) {
+            message.reply(`Error updating stat: ${err.message}`);
+          }
+          break;
       }
 
       default:
