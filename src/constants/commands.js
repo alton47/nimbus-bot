@@ -11,7 +11,7 @@ const COMMANDS = {
   STORE: "!store",
   SET_STATS: "!setstats",
   MAX_HP: "!maxhp",
-  UPSKILL: "!upskill",
+  UPSKILL: "Usage: !upskill <characterName> <skillName>",
 };
 
 const USAGE = {

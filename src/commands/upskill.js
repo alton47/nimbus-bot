@@ -37,7 +37,8 @@ function upskill(characterName, skillName) {
     throw new Error(`Skill '${skillName}' does not exist on this character.`);
   }
 
-  skills[skillName] += 1;
+  skills[skillName].bonus += 1;
+  return skills[skillName].base + skills[skillName].bonus;
 
   fs.writeFileSync(characterPath, JSON.stringify(character, null, 2));
 
